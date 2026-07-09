@@ -9,8 +9,8 @@ interface ProductCardProps {
 
 export default function ProductCard({name, price, url, alt} : ProductCardProps) {
   return (
-    <div className="flex flex-col snap-start shrink-0 w-100">
-      <div className="aspect-[3/4] w-full overflow-hidden bg-gray-100">
+    <div className="flex flex-col w-[375px]">
+      <div className="h-[500px] w-full overflow-hidden bg-gray-100">
         <img 
           src={url}
           alt={alt}
