@@ -8,7 +8,7 @@ interface ImageProps {
 
 export default function Poster({url, alt, header} : ImageProps) {
   return (
-    <div className="w-full h-130 relative">
+    <div className="w-full aspect-[5/2] relative">
       <img 
         src={url} 
         alt={alt} 

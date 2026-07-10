@@ -14,7 +14,7 @@ interface MenAndWomenProps {
 
 export default function MenAndWomen( {men, women} : MenAndWomenProps ) {
   return (
-    <div className="grid grid-cols-2 gap-2 px-2"> 
+    <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-2 px-2"> 
       <div className="relative">
         <img 
           src={men.url} 

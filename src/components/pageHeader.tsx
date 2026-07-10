@@ -9,7 +9,7 @@ export default function PageHeader() {
                 <h2 className="text-xl font-bold">ATLAS</h2>
             </div>
 
-            <nav className="justify-self-center flex gap-8 text-md font-medium ">
+            <nav className="justify-self-center flex gap-10 text-md font-medium ">
                 <a href="#">New & Featured</a>
                 <a href="#">Men</a>
                 <a href="#">Women</a>
