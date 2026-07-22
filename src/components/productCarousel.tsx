@@ -18,11 +18,14 @@ const products = [
 export default function ProductCarousel() {
     const scrollRef = useRef<HTMLDivElement>(null);
 
-    // Scroll by one full page (the width of the visible viewport).
+    // Scroll by a single card's width (plus the gap) instead of a full page.
     const scroll = (direction: number) => {
         const el = scrollRef.current;
         if (!el) return;
-        el.scrollBy({ left: direction * el.clientWidth, behavior: 'smooth' });
+        const card = el.children[0] as HTMLElement | undefined;
+        if (!card) return;
+        const gap = parseFloat(getComputedStyle(el).columnGap || '0');
+        el.scrollBy({ left: direction * (card.offsetWidth + gap), behavior: 'smooth' });
     }
 
     return (
@@ -37,7 +40,7 @@ export default function ProductCarousel() {
 
             <div
                 ref={scrollRef}
-                className="flex w-full gap-2 overflow-x-auto snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                className="flex w-full gap-3 overflow-x-auto snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             >
                 {products.map((product, i) => (
                     <div

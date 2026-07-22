@@ -80,7 +80,7 @@ export const Slideshow: React.FC<SlideshowProps> = ({
 
 return (
   <div
-    className="relative group w-full h-[250px] sm:h-[400px] md:h-[550px] lg:h-[800px] overflow-hidden shadow-xl bg-gray-900"
+    className="relative group w-full h-[250px] sm:h-[400px] md:h-[550px] lg:h-[700px] overflow-hidden shadow-xl bg-gray-900"
     onMouseEnter={() => setIsPaused(true)}
     onMouseLeave={() => setIsPaused(false)}
   >
