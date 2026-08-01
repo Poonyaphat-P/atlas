@@ -10,7 +10,7 @@ interface ProductCardProps {
 export default function ProductCard({name, price, url, alt} : ProductCardProps) {
   return (
     <div className="flex flex-col w-full">
-      <div className="aspect-[9/10] w-full overflow-hidden bg-gray-100">
+      <div className="aspect-[9/10] w-full overflow-hidden">
         <img 
           src={url}
           alt={alt}

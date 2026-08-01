@@ -80,7 +80,7 @@ export const Slideshow: React.FC<SlideshowProps> = ({
 
 return (
   <div
-    className="relative group w-full h-[250px] sm:h-[400px] md:h-[550px] lg:h-[700px] overflow-hidden shadow-xl bg-gray-900"
+    className="relative group w-full h-[250px] sm:h-[400px] md:h-[550px] lg:h-[650px] overflow-hidden shadow-xl bg-gray-900"
     onMouseEnter={() => setIsPaused(true)}
     onMouseLeave={() => setIsPaused(false)}
   >
@@ -92,15 +92,15 @@ return (
       onTransitionEnd={handleTransitionEnd}
     >
       {extendedImages.map((image, index) => (
-        <div key={index} className="h-full w-full flex-shrink-0">
+        <div key={index} className="relative h-full w-full flex-shrink-0">
           <img
             src={image.url}
             alt={image.alt}
             className="w-full h-full object-cover"
           />
           {image.caption && (
-            <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent p-4 text-white text-center">
-              <p className="text-lg font-medium">{image.caption}</p>
+            <div className="absolute top-1/2 -translate-y-1/2 inset-x-0 p-4 text-white text-center">
+              <p className="justify-center text-5xl font-medium text-red-500">{image.caption}</p>
             </div>
           )}
         </div>

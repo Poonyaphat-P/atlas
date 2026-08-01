@@ -1,9 +1,9 @@
-import { Geist } from "next/font/google";
+import { Noto_Sans_Thai } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const notoSansThai = Noto_Sans_Thai({
+  variable: "--font-sans",
+  subsets: ["thai", "latin"],
 });
 
 export default function RootLayout({
@@ -13,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={geistSans.variable}>{children}</body>
+      <body className={`${notoSansThai.variable} bg-white`}>{children}</body>
     </html>
   )
 }

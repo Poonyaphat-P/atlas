@@ -39,8 +39,8 @@ export default function Home() {
         <ProductCarousel />
       </div>
 
-      <div className="max-w-2xl mx-auto my-15 text-justify text-white">
-        <p className='text-2xl font-semibold text-center py-5'>ATLAS</p>
+      <div className="max-w-xs md:max-w-md lg:max-w-2xl mx-auto my-15 text-justify text-black">
+        <p className='text-2xl font-semibold text-center py-5 text-black'>ATLAS</p>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis fugiat vitae error placeat quibusdam aut, sit minus necessitatibus voluptatem numquam eveniet quasi labore suscipit sed dolores ad quam officiis corrupti rerum ratione porro aliquam exercitationem? Porro natus assumenda commodi vitae? Recusandae fugiat voluptatibus quis commodi excepturi optio quidem architecto. Atque nihil error cum ad, quam quis. Corrupti, eius alias. Pariatur incidunt vel veniam, quia ut unde repudiandae laboriosam. Nihil repellendus tempora ad fugit deleniti quae accusantium, possimus, doloremque nulla adipisci quos maiores quam. Corrupti culpa est assumenda, ab, illum dolorem recusandae cumque rerum praesentium fugiat magnam nihil numquam aut facere sit, eaque ut earum ex? Quia maxime asperiores nobis quibusdam? Nam optio ratione minus unde, exercitationem eos laudantium dolorem fuga quod et, veniam molestias odio adipisci temporibus rerum, animi illo nemo. Odio dolorem asperiores quas assumenda deleniti saepe iure aperiam incidunt exercitationem, sequi totam necessitatibus ducimus, deserunt vitae repudiandae. Consectetur modi vero blanditiis quia nemo quos rem optio, eveniet rerum sapiente dignissimos voluptates facere nostrum accusantium! Minima dolore totam deserunt nihil unde consequuntur esse delectus quam aspernatur magni. Rem sequi est possimus laboriosam maiores a expedita, magni cumque sint ratione. Hic qui sapiente numquam nam corrupti recusandae? Earum, sint illum?
       </div>
 
