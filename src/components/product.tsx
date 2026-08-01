@@ -74,7 +74,7 @@ export const ProductShow: React.FC<ProductProps> = ({ slug, name, price, images 
       </div>
 
       <div className="mt-3 mb-3 pl-3 flex flex-col gap-1">
-        <p className="text-base text-black">{name}</p>
+        <p className="text-base text-black font-bold">{name}</p>
         <p className="text-base text-black">{price}</p>
       </div>
     </Link>

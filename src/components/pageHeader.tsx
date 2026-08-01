@@ -8,27 +8,27 @@ const menSections = [
   {
 		title: 'Shoes',
 		links: [
-			{ name: 'sneakers', href: ''},
-			{ name: 'running', href: '' },
-      { name: 'basketball', href: '' },
-      { name: 'football', href: '' }
+			{ name: 'Sneakers', href: ''},
+			{ name: 'Running', href: '' },
+      { name: 'Basketball', href: '' },
+      { name: 'Football', href: '' }
 		]
   },
   {
     title: 'Clothing',
     links: [
-      { name: 't-shirts', href: '' },
-      { name: 'shirts', href: '' },
-      { name: 'pants', href: '' },
-      { name: 'jackets', href: '' }
+      { name: 'T-shirts', href: '' },
+      { name: 'Shirts', href: '' },
+      { name: 'Pants', href: '' },
+      { name: 'Jackets', href: '' }
     ]
   },
   {
     title: 'Accessories',
     links: [
-      { name: 'hats', href: '' },
-      { name: 'socks', href: '' },
-      { name: 'bags', href: '' }
+      { name: 'Hats', href: '' },
+      { name: 'Socks', href: '' },
+      { name: 'Bags', href: '' }
     ]
   },
   {
@@ -44,27 +44,26 @@ const womenSections = [
   {
 		title: 'Shoes',
 		links: [
-			{ name: 'sneakers', href: ''},
-			{ name: 'running', href: '' },
-      { name: 'basketball', href: '' },
-      { name: 'football', href: '' }
+			{ name: 'Sneakers', href: ''},
+			{ name: 'Running', href: '' },
+            { name: 'Basketball', href: '' }
 		]
   },
   {
     title: 'Clothing',
     links: [
-      { name: 't-shirts', href: '' },
-      { name: 'shirts', href: '' },
-      { name: 'pants', href: '' },
-      { name: 'jackets', href: '' }
+      { name: 'T-shirts', href: '' },
+      { name: 'Shirts', href: '' },
+      { name: 'Pants', href: '' },
+      { name: 'Jackets', href: '' }
     ]
   },
   {
     title: 'Accessories',
     links: [
-      { name: 'hats', href: '' },
-      { name: 'socks', href: '' },
-      { name: 'bags', href: '' }
+      { name: 'Hats', href: '' },
+      { name: 'Socks', href: '' },
+      { name: 'Bags', href: '' }
     ]
   },
   {
@@ -80,15 +79,15 @@ const kidsSections = [
   {
     title: 'Boys',
     links: [
-      { name: 'sneakers', href: ''},
-      { name: 'clothing', href: '' }
+      { name: 'Sneakers', href: ''},
+      { name: 'Clothing', href: '' }
     ]
   },
   {
     title: 'Girls',
     links: [
-      { name: 'sneakers', href: ''},
-      { name: 'clothing', href: '' }
+      { name: 'Sneakers', href: ''},
+      { name: 'Clothing', href: '' }
     ]
   }
 ]
@@ -97,68 +96,68 @@ const saleSections = [
   {
     title: 'Men',
     links: [
-      { name: 'sneakers', href: ''},
-      { name: 'clothing', href: '' },
-      { name: 'accessories', href: '' }
+      { name: 'Sneakers', href: ''},
+      { name: 'Clothing', href: '' },
+      { name: 'Accessories', href: '' }
     ]
   },
   {
     title: 'Women',
     links: [
-      { name: 'sneakers', href: ''},
-      { name: 'clothing', href: '' },
-      { name: 'accessories', href: '' }
+      { name: 'Sneakers', href: ''},
+      { name: 'Clothing', href: '' },
+      { name: 'Accessories', href: '' }
     ]
   },
   {
     title: 'Kids',
     links: [
-      { name: 'sneakers', href: ''},
-      { name: 'clothing', href: '' }
+      { name: 'Sneakers', href: ''},
+      { name: 'Clothing', href: '' }
     ]
   }
 ]
 
 export default function PageHeader() {
   return (
-    <div className="relative grid grid-cols-3 items-center px-15 py-3 bg-gray-300">
+    <div className="relative grid grid-cols-3 items-center px-15 py-5 bg-black text-white sticky top-0 z-50">
       <div className="justify-self-start">
         <Link href="/">
           <h2 className="text-xl font-bold">ATLAS</h2>
         </Link>
       </div>
 
-      <nav className="justify-self-center flex gap-10 text-md font-medium ">
-        <Link href="#">New & Featured</Link>
+      <nav className="justify-self-center flex text-md font-bold ">
+        <Link href="#" className='px-5'>New & Featured</Link>
 
         <div className='group'>
-					<Link href="/men" className='py-5'>Men</Link>
-					<MegaMenu sections={menSections} />
+			<Link href="/men" className='px-5 py-8'>Men</Link>
+		    <MegaMenu sections={menSections} />
         </div>
 
         <div className='group'>
-          <Link href="/women" className='py-5'>Women</Link>
+          <Link href="/women" className='px-5 py-8'>Women</Link>
           <MegaMenu sections={womenSections} />
         </div>
 
         <div className='group'>
-          <Link href="/kids" className='py-5'>Kids</Link>
+          <Link href="/kids" className='px-5 py-8'>Kids</Link>
           <MegaMenu sections={kidsSections} />
         </div>
         
         <div className='group'>
-          <Link href="/sale" className='py-5'>Sale</Link>
+          <Link href="/sale" className='px-5 py-8'>Sale</Link>
           <MegaMenu sections={saleSections} />
         </div>
       </nav>
 
-      <div className="justify-self-end flex items-center gap-4 text-black">
+      <div className="justify-self-end flex items-center gap-4 text-white">
         <div className="relative">
           <SearchIcon strokeWidth={1} className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
           <input
             type="text"
             placeholder="Search"
-            className="bg-gray-100 rounded-full pl-9 pr-4 py-2 text-sm outline-none"
+            className="bg-gray-100 rounded-full pl-9 pr-4 py-2 text-md font-semibold outline-none text-gray-500"
           />
         </div>
         <HeartIcon strokeWidth={1} className="w-6 h-6" />

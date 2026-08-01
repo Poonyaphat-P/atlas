@@ -1,19 +1,19 @@
-import { Noto_Sans_Thai } from "next/font/google";
+import { Montserrat } from "next/font/google";
+
 import "./globals.css";
 
-const notoSansThai = Noto_Sans_Thai({
-  variable: "--font-sans",
-  subsets: ["thai", "latin"],
+const montserrat = Montserrat({
+  subsets: ["latin"],
 });
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${notoSansThai.variable} bg-white`}>{children}</body>
+    <html lang="en" className={montserrat.className}>
+      <body>{children}</body>
     </html>
-  )
+  );
 }

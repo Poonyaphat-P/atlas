@@ -32,7 +32,7 @@ export default function ProductCarousel() {
         <div className="relative flex items-center justify-center gap-2">
             <button
                 aria-label="Previous"
-                className="shrink-0 text-white text-3xl px-2 hover:opacity-70"
+                className="shrink-0 text-black text-3xl px-2 hover:opacity-70"
                 onClick={() => scroll(-1)}
             >
                 ‹
@@ -54,7 +54,7 @@ export default function ProductCarousel() {
 
             <button
                 aria-label="Next"
-                className="shrink-0 text-white text-3xl px-2 hover:opacity-70"
+                className="shrink-0 text-black text-3xl px-2 hover:opacity-70"
                 onClick={() => scroll(1)}
             >
                 ›
