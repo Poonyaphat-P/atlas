@@ -89,6 +89,13 @@ const kidsSections = [
       { name: 'Sneakers', href: ''},
       { name: 'Clothing', href: '' }
     ]
+  },
+  {
+    title: 'Accessories',
+    links: [
+      { name: 'Hats', href: ''},
+      { name: 'Bags', href: ''}
+    ]
   }
 ]
 
@@ -118,6 +125,31 @@ const saleSections = [
   }
 ]
 
+const newSections = [
+  {
+    title: 'New Collection',
+    links: [
+      { name: 'Oregon', href: '' },
+      { name: 'Neptune', href: '' }
+    ]
+  },
+  {
+    title: 'Collaboration',
+    links: [
+      { name: 'Artist 1', href: '' },
+      { name: 'Artist 2', href: '' }
+    ]
+  },
+  {
+    title: 'Choose by Sport',
+    links: [
+      { name: 'Running', href: '' },
+      { name: 'Training', href: '' },
+      { name: 'Basketball', href: '' }
+    ]
+  }
+]
+
 export default function PageHeader() {
   return (
     <div className="relative grid grid-cols-3 items-center px-15 py-5 bg-black text-white sticky top-0 z-50">
@@ -128,11 +160,15 @@ export default function PageHeader() {
       </div>
 
       <nav className="justify-self-center flex text-md font-bold ">
-        <Link href="#" className='px-5'>New & Featured</Link>
+        
+        <div className='group'>
+          <Link href="/new" className='px-5 py-8'>New & Featured</Link>
+          <MegaMenu sections={newSections} />
+        </div>
 
         <div className='group'>
-			<Link href="/men" className='px-5 py-8'>Men</Link>
-		    <MegaMenu sections={menSections} />
+			      <Link href="/men" className='px-5 py-8'>Men</Link>
+		      <MegaMenu sections={menSections} />
         </div>
 
         <div className='group'>

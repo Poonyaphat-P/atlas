@@ -17,7 +17,7 @@ export default function Home() {
     <main>
       <PageHeader />
 
-      <div className="w-full pb-5">
+      <div className="w-full pb-2">
         <Slideshow images={sampleImages} autoplay={true} interval={4000} />
       </div>
 

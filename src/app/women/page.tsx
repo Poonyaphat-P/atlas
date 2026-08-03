@@ -17,7 +17,7 @@ export default function Women() {
         <Slideshow images={sampleImages} autoplay={true} interval={4000} />
       </div>
 
-      <div className="max-w-7xl mx-auto px-5">
+      <div className="max-w-[105rem] mx-auto px-5">
         <Breadcrumbs 
           items={[
             { label: 'Homepage', href: '/' },

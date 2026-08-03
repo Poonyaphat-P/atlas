@@ -30,7 +30,7 @@ export default function ProductDetailPage({
   return (
     <div>
       <PageHeader/>
-      <div className='max-w-5xl mx-auto'>
+      <div className='max-w-[105rem] mx-auto'>
         <Breadcrumbs 
           items={[
             { label: 'Homepage', href: '/' },
