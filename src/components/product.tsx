@@ -20,18 +20,20 @@ export const ProductShow: React.FC<ProductProps> = ({ slug, name, price, images 
   const [index, setIndex] = useState<number>(0);
 
   const nextImage = (e: React.MouseEvent): void => {
+    e.preventDefault();
     e.stopPropagation();
     setIndex((prev) => (prev + 1) % n);
   };
 
   const prevImage = (e: React.MouseEvent): void => {
+    e.preventDefault();
     e.stopPropagation();
     setIndex((prev) => (prev - 1 + n) % n);
   };
 
   return (
-    <Link href={`/product/${slug}`} className="flex flex-col w-full group bg-gray-300">
-      <div className="relative aspect-[9/10] w-full overflow-hidden bg-gray-300">
+    <Link href={`/product/${slug}`} className="flex flex-col w-full group bg-gray-300 mb-8">
+      <div className="relative aspect-[1/1] w-full overflow-hidden bg-gray-300">
         <img
           src={images[index]?.url}
           alt={images[index]?.alt}
@@ -61,6 +63,7 @@ export const ProductShow: React.FC<ProductProps> = ({ slug, name, price, images 
                 <button
                   key={idx}
                   onClick={(e) => {
+                    e.preventDefault();
                     e.stopPropagation();
                     setIndex(idx);
                   }}

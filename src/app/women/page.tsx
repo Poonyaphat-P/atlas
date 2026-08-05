@@ -1,4 +1,4 @@
-import PageHeader from '@/components/pageHeader'
+import PageHeader from '@/components/header/pageHeader'
 import { Slideshow } from '@/components/imageSlideshow'
 import {ProductShow } from '@/components/product'
 import Breadcrumbs from '@/components/breadCrumbs';
@@ -17,7 +17,7 @@ export default function Women() {
         <Slideshow images={sampleImages} autoplay={true} interval={4000} />
       </div>
 
-      <div className="max-w-[105rem] mx-auto px-5">
+      <div className="max-w-[85rem] mx-auto">
         <Breadcrumbs 
           items={[
             { label: 'Homepage', href: '/' },

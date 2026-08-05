@@ -1,7 +1,7 @@
 'use client'
 
 import { use, useState } from 'react'
-import PageHeader from '@/components/pageHeader'
+import PageHeader from '@/components/header/pageHeader'
 import Breadcrumbs from '@/components/breadCrumbs'
 
 export default function ProductDetailPage({
@@ -26,11 +26,12 @@ export default function ProductDetailPage({
   };
 
   const [selectedImage, setSelectedImage] = useState(product.image[0]);
+  const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
   return (
     <div>
       <PageHeader/>
-      <div className='max-w-[105rem] mx-auto'>
+      <div className='max-w-5xl mx-auto'>
         <Breadcrumbs 
           items={[
             { label: 'Homepage', href: '/' },
@@ -69,7 +70,10 @@ export default function ProductDetailPage({
               {product.size.map((size, index) => (
                 <button
                   key={index}
-                  className='border-2 border-gray-300 rounded-md p-2 hover:border-black transition-colors'
+                  onClick={() => setSelectedSize(size)}
+                  className={`border-2 rounded-md p-2 transition-colors ${
+                    selectedSize === size ? 'border-black' : 'border-gray-300 hover:border-black'
+                  }`}
                 >
                   {size}
                 </button>

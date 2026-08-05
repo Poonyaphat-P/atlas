@@ -1,8 +1,12 @@
-import { SearchIcon } from "lucide-react";
+'use client'
+
 import { HeartIcon } from "lucide-react";
 import { ShoppingBag } from "lucide-react";
-import MegaMenu from '@/components/megaMenu'
+import MegaMenu from '@/components/header/megaMenu'
+import SearchBar from '@/components/header/searchbar'
+import Atlas from '@/components/header/atlas'
 import Link from "next/link";
+import { useState } from "react";
 
 const menSections = [
   {
@@ -151,54 +155,69 @@ const newSections = [
 ]
 
 export default function PageHeader() {
+
+  const [isSearching, setIsSearching] = useState(false);
+
   return (
-    <div className="relative grid grid-cols-3 items-center px-15 py-5 bg-black text-white sticky top-0 z-50">
-      <div className="justify-self-start">
-        <Link href="/">
-          <h2 className="text-xl font-bold">ATLAS</h2>
-        </Link>
+    <div className="relative flex items-center px-15 py-4 bg-black text-white sticky top-0 z-50">
+      <Atlas />
+
+      <div className="flex-1 flex justify-center">
+        <nav className={`flex text-md font-bold transition-all duration-500 ease-in-out pointer-events-auto ${
+          isSearching ? 'opacity-0 max-w-0 overflow-hidden' : 'opacity-100 max-w-xl'
+        }`}>
+          <div className='group'>
+            <Link href="/new" className='px-5 py-8 whitespace-nowrap'>New & Featured</Link>
+            <MegaMenu sections={newSections} />
+          </div>
+
+          <div className='group'>
+            <Link href="/men" className='px-5 py-8'>Men</Link>
+            <MegaMenu sections={menSections} />
+          </div>
+
+          <div className='group'>
+            <Link href="/women" className='px-5 py-8'>Women</Link>
+            <MegaMenu sections={womenSections} />
+          </div>
+
+          <div className='group'>
+            <Link href="/kids" className='px-5 py-8'>Kids</Link>
+            <MegaMenu sections={kidsSections} />
+          </div>
+          
+          <div className='group'>
+            <Link href="/sale" className='px-5 py-8'>Sale</Link>
+            <MegaMenu sections={saleSections} />
+          </div>
+        </nav>
       </div>
 
-      <nav className="justify-self-center flex text-md font-bold ">
-        
-        <div className='group'>
-          <Link href="/new" className='px-5 py-8'>New & Featured</Link>
-          <MegaMenu sections={newSections} />
-        </div>
-
-        <div className='group'>
-			      <Link href="/men" className='px-5 py-8'>Men</Link>
-		      <MegaMenu sections={menSections} />
-        </div>
-
-        <div className='group'>
-          <Link href="/women" className='px-5 py-8'>Women</Link>
-          <MegaMenu sections={womenSections} />
-        </div>
-
-        <div className='group'>
-          <Link href="/kids" className='px-5 py-8'>Kids</Link>
-          <MegaMenu sections={kidsSections} />
-        </div>
-        
-        <div className='group'>
-          <Link href="/sale" className='px-5 py-8'>Sale</Link>
-          <MegaMenu sections={saleSections} />
-        </div>
-      </nav>
-
-      <div className="justify-self-end flex items-center gap-4 text-white">
-        <div className="relative">
-          <SearchIcon strokeWidth={1} className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
-          <input
-            type="text"
-            placeholder="Search"
-            className="bg-gray-100 rounded-full pl-9 pr-4 py-2 text-md font-semibold outline-none text-gray-500"
-          />
-        </div>
-        <HeartIcon strokeWidth={1} className="w-6 h-6" />
-        <ShoppingBag strokeWidth={1} className="w-6 h-6" />
+      <div className={`absolute inset-y-0 z-10 flex items-center transition-all duration-500 ease-in-out ${
+        isSearching 
+          ? 'max-lg:left-15 max-lg:right-15 max-lg:w-auto lg:right-[calc(50%_-_28rem)] lg:w-[56rem]' 
+          : 'right-[8.75rem] w-52'
+      }`}>
+        <SearchBar 
+          className="w-full" 
+          onFocus={() => setIsSearching(true)} 
+        />
       </div>
+
+      <div className={`ml-auto flex items-center gap-4 transition-all duration-300 ${
+        isSearching ? 'opacity-0 w-0 overflow-hidden pointer-events-none' : 'opacity-100'
+      }`}>
+        <Link href="/favorite"><HeartIcon strokeWidth={1} className="w-6 h-6 shrink-0" /></Link>
+        <ShoppingBag strokeWidth={1} className="w-6 h-6 shrink-0" />
+      </div>
+      
+      <button className={`cursor-pointer text-md font-semibold shrink-0 transition-all duration-0 ease-in-out ${
+        isSearching ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none w-0 overflow-hidden'
+      }`} 
+      onClick={() => setIsSearching(false)}
+      >
+        Cancel
+      </button>
     </div>
-    )
+  );
 }
