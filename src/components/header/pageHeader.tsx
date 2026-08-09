@@ -208,7 +208,7 @@ export default function PageHeader() {
         isSearching ? 'opacity-0 w-0 overflow-hidden pointer-events-none' : 'opacity-100'
       }`}>
         <Link href="/favorite"><HeartIcon strokeWidth={1} className="w-6 h-6 shrink-0" /></Link>
-        <ShoppingBag strokeWidth={1} className="w-6 h-6 shrink-0" />
+        <Link href="/cart"><ShoppingBag strokeWidth={1} className="w-6 h-6 shrink-0" /></Link>
       </div>
       
       <button className={`cursor-pointer text-md font-semibold shrink-0 transition-all duration-0 ease-in-out ${
