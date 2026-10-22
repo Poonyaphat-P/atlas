@@ -13,7 +13,7 @@ export default function MegaMenu({ sections }: MegaMenuProps) {
   if (!sections || sections.length === 0) return null;
 
   return (
-    <div className="hidden group-hover:block fixed left-0 right-0 top-[60px] w-full bg-white text-black shadow-2xl z-50 py-7">
+    <div className="hidden group-hover:block absolute left-0 top-full w-full bg-white text-black shadow-2xl z-50 py-7">
       <div className='max-w-7xl mx-auto px-20 grid grid-cols-4 gap-10'>
         {sections.map((section, idx) => (
           <div key={idx}>

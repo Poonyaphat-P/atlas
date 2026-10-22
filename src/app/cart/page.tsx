@@ -15,6 +15,14 @@ export default async function CartPage() {
     },
   })
 
+  const items = cart?.items ?? []
+  const subtotal = items.reduce(
+    (total, item) => total + item.product.price * item.quantity,0
+  )
+  const tax = subtotal * 0.07
+  const shipping = subtotal > 0 ? 50 : 0
+  const total = subtotal + tax + shipping
+
   return (
     <div>
       <PageHeader />
@@ -34,6 +42,7 @@ export default async function CartPage() {
             {cart?.items.map((item) => (
               <CartProductCart
                 key={item.id}
+                cartItemId={item.id}
                 name={item.product.name}
                 description={item.product.description ?? ''}
                 price={item.product.price}
@@ -45,9 +54,35 @@ export default async function CartPage() {
         </section>
 
         <aside className='col-span-4 font-medium text-xl'>
-          Summary
-          <div> Price : </div>
-          <button className='w-full bg-black rounded-full cursor-pointer text-white font-semibold text-md py-2 mt-50'>Checkout</button>
+          <h2>Summary</h2>
+
+          <div className='mt-4 space-y-2 text-base'>
+            <div className='flex justify-between'>
+              <span>Subtotal</span>
+              <span>${subtotal.toFixed(2)}</span>
+            </div>
+
+            <div className='flex justify-between'>
+              <span>Tax</span>
+              <span>${tax.toFixed(2)}</span>
+            </div>
+
+            <div className='flex justify-between'>
+              <span>Shipping</span>
+              <span>${shipping.toFixed(2)}</span>
+            </div>
+
+            <div className='flex justify-between border-t pt-3 text-lg font-bold'>
+              <span>Total</span>
+              <span>${total.toFixed(2)}</span>
+            </div>
+          </div>
+
+          <button
+            className='w-full bg-red-950 text-white py-2.5 rounded-full mt-6 text-base hover:bg-red-900'
+          >
+            Checkout
+          </button>
         </aside>
       </div>
     </div>

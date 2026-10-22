@@ -19,6 +19,22 @@ export default async function ProductDetailPage({
     return <div>Product not found</div>
   }
 
+  const currentUser = await prisma.user.findUnique({
+    where: {
+      email: 'demo@atlas.com',
+    },
+  })
+
+  const existingFavorite = currentUser
+    ? await prisma.favorite.findFirst({
+        where: {
+          userId: currentUser.id,
+          productId: product.id,
+        }
+      })
+    : null
+  
+
   return (
     <div>
       <PageHeader/>
@@ -30,7 +46,7 @@ export default async function ProductDetailPage({
             { label: product.name }
           ]}
         />
-        <ProductDetailClient product={product} />
+        <ProductDetailClient product={product} initialIsFavorite={Boolean(existingFavorite)} />
       </div>
     </div>
 

@@ -159,11 +159,11 @@ export default function PageHeader() {
   const [isSearching, setIsSearching] = useState(false);
 
   return (
-    <div className="relative flex items-center px-15 py-4 bg-black text-white sticky top-0 z-50">
+    <div className="relative flex items-center px-15 py-6 bg-black text-white sticky top-0 z-50">
       <Atlas />
 
       <div className="flex-1 flex justify-center">
-        <nav className={`flex text-md font-bold transition-all duration-500 ease-in-out pointer-events-auto ${
+        <nav className={`flex text-md font-medium transition-all duration-500 ease-in-out pointer-events-auto ${
           isSearching ? 'opacity-0 max-w-0 overflow-hidden' : 'opacity-100 max-w-xl'
         }`}>
           <div className='group'>

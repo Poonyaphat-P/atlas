@@ -1,8 +1,17 @@
+import { prisma } from "@/lib/prisma"
+
 import PageHeader from '@/components/header/pageHeader'
 import { Slideshow } from '@/components/imageSlideshow'
-import { ProductShow } from '@/components/product'
 import Breadcrumbs from '@/components/breadCrumbs';
-export default function NewAndFeature() {
+import ProductCard from "@/components/productcard";
+
+export default async function New() {
+
+  const products = await prisma.product.findMany({
+    where : {
+      isNew : true
+    }
+  })
 
   const sampleImages = [
     { url: '/pictures/preview1.jpg', alt: 'preview1', caption: 'new1'},
@@ -21,18 +30,23 @@ export default function NewAndFeature() {
         <Breadcrumbs 
           items={[
             { label: 'Homepage', href: '/' },
-            { label: 'New & Feature', href: '/newandfeature' },
+            { label: 'New & Feature', href: '/new' },
           ]}
         />
-        <div className='text-5xl font-bold py-4'>New & Feature</div>
+        <div className='text-5xl font-bold py-4'>New Product</div>
         <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore perferendis ipsum accusantium dolores nostrum molestias eum quam maxime! Repudiandae vitae eligendi numquam magnam commodi iure laborum tenetur enim iusto dolorum!</div>
-        <div className='grid grid-cols-4 grid-rows-1 gap-4 mt-5'>
-          <ProductShow slug="product-1" name="product1" price={100} images={sampleImages} />
-          <ProductShow slug="product-2" name="product2" price={200} images={sampleImages} />
-          <ProductShow slug="product-3" name="product3" price={300} images={sampleImages} />
-          <ProductShow slug="product-4" name="product3" price={300} images={sampleImages} />
-          <ProductShow slug="product-5" name="product3" price={300} images={sampleImages} />
-          <ProductShow slug="product-6" name="product3" price={300} images={sampleImages} />
+        <div className='grid grid-cols-4 gap-4 mt-5'>
+          {products.map((product) =>
+            <ProductCard
+              key={product.id}
+              productId={product.id}
+              slug={product.slug}
+              name={product.name}
+              price={product.price}
+              url={product.image[0] ?? ''}
+              alt={product.name}
+            />
+          )}
         </div>
       </div>
 

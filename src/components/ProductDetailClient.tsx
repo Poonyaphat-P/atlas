@@ -1,9 +1,11 @@
 'use client'
 
 import { useState } from 'react'
-
+import { addToCart } from '@/lib/actions/cart'
+import { toggleFavorite } from '@/lib/actions/favorite'
 interface ProductDetailClientProps {
   product: {
+    id: string;
     name: string;
     subTitle: string | null;
     description: string | null;
@@ -11,12 +13,45 @@ interface ProductDetailClientProps {
     price: number;
     stock: number;
     size: string[];
-  }
+  };
+  initialIsFavorite: boolean;
 }
 
-export default function ProductDetailClient({product} : ProductDetailClientProps) {
+export default function ProductDetailClient({ product, initialIsFavorite, }: ProductDetailClientProps) {
   const [selectedImage, setSelectedImage] = useState(product.image[0] ?? '/pictures/preview1.jpg');
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState('');
+  const [isFavorite, setIsFavorite] = useState(initialIsFavorite)
+  const [isFavoriteLoading, setIsFavoriteLoading] = useState(false)
+
+  async function handleToggleFavorite() {
+    setIsFavoriteLoading(true)
+
+    const result = await toggleFavorite(product.id)
+    if(result.success && result.favorited !== undefined) {
+      setIsFavorite(result.favorited)
+    } 
+    setIsFavoriteLoading(false)
+  }
+  async function handleAddToCart() {
+    if (!selectedSize) {
+      setMessage('Please select a size');
+      return
+    }
+
+    setIsLoading(true);
+    setMessage('');
+
+    const result = await addToCart(product.id, selectedSize);
+
+    if (result.success) {
+      setMessage('Added to cart')
+    } else {
+      setMessage(result.error ?? 'Failed to add to cart')
+    }
+    setIsLoading(false)
+  }
 
   return (
       <div className='grid grid-cols-5 gap-10'>
@@ -58,8 +93,22 @@ export default function ProductDetailClient({product} : ProductDetailClientProps
                   {size}
                 </button>
               ))}
-              <button className='col-span-3 border-2 border-gray-300 rounded-3xl p-2 hover:border-black transition-colors mt-5'>Add to Cart</button>
-              <button className='col-span-3 border-2 border-gray-300 rounded-3xl p-2 hover:border-black transition-colors mt-1'>Add to Favorite</button>
+              <button 
+                onClick={handleAddToCart}
+                disabled={isLoading}
+                className='col-span-3 border-2 border-gray-300 rounded-3xl p-2 hover:border-black transition-colors mt-5'>
+                  {isLoading ? 'Adding...' : 'Add to Cart'}
+                </button>
+              <button onClick={handleToggleFavorite} disabled={isFavoriteLoading} className='col-span-3 border-2 border-gray-300 rounded-3xl p-2 hover:border-black transition-colors mt-1'>
+                {isFavoriteLoading
+                  ? 'Updating...'
+                  : isFavorite
+                    ? 'Remove from Favorite'
+                    : 'Add to Favorite'}
+              </button>
+              {message && (
+                <p className='col-span-3 text-center mt-2 text-sm text-gray-700'>{message}</p>
+              )}
             </div>
           </div>
         </div>

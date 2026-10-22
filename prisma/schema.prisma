@@ -70,22 +70,25 @@ model VerificationToken {
 }
 
 model Product {
-  id          String      @id @default(cuid())
-  slug        String      @unique
-  name        String
-  subTitle    String?
-  description String?
-  image       String[]
-  price       Float
-  stock       Int
-  size        String[]
-  category    String
-  gender      String
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime    @updatedAt
-  cartItems   CartItem[]
-  favorites   Favorite[]
-  orderItems  OrderItem[]
+  id            String      @id @default(cuid())
+  slug          String      @unique
+  name          String
+  subTitle      String?
+  description   String?
+  image         String[]
+  price         Float
+  originalPrice Float?
+  isOnSale      Boolean     @default(false)
+  stock         Int
+  size          String[]
+  category      String
+  gender        String
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  isNew         Boolean     @default(false)
+  cartItems     CartItem[]
+  favorites     Favorite[]
+  orderItems    OrderItem[]
 }
 
 model Cart {

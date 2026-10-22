@@ -2,7 +2,6 @@ import { prisma } from "@/lib/prisma"
 
 import PageHeader from '@/components/header/pageHeader'
 import { Slideshow } from '@/components/imageSlideshow'
-import { ProductShow } from '@/components/product'
 import Breadcrumbs from '@/components/breadCrumbs';
 import ProductCard from "@/components/productcard";
 
@@ -40,6 +39,7 @@ export default async function Men() {
           {products.map((product) =>
             <ProductCard
               key={product.id}
+              productId={product.id}
               slug={product.slug}
               name={product.name}
               price={product.price}

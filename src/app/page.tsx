@@ -23,19 +23,19 @@ export default function Home() {
 
       <MenAndWomen men={{ url: '/pictures/preview1.jpg', alt: 'men', header: 'MEN', href: '/men'}} women={{ url: '/pictures/preview2.jpg', alt: 'women', header: 'WOMEN', href: '/women'}} />
 
-      <h6 className="text-2xl font-semibold text-left px-5 md:px-10 lg:px-15 py-5 mt-15">New Arrivals</h6>
+      <h6 className="text-2xl font-bold text-left px-5 md:px-10 lg:px-15 py-5 mt-15">New Arrivals</h6>
 
       <Poster url="/pictures/preview1.jpg" alt="poster" header="OREGON" />
 
       <div className='mt-17 mx-5 md:mx-10 lg:mx-20 mb-10'>
-        <p className='text-2xl font-semibold text-left py-5 px-9'>New Collection OREGON</p>
+        <p className='text-2xl font-bold text-left py-5 px-9'>New Collection OREGON</p>
         <ProductCarousel />
       </div>
 
       <Poster url="/pictures/preview3.jpg" alt="poster" header="NEPTUNE" />
 
       <div className='mt-17 mx-5 md:mx-10 lg:mx-20 mb-5'>
-        <p className='text-2xl font-semibold text-left py-5 px-9'>New Collection NEPTUNE</p>
+        <p className='text-2xl font-bold text-left py-5 px-9'>New Collection NEPTUNE</p>
         <ProductCarousel />
       </div>
 
